@@ -21,28 +21,39 @@
  * }
  */
 class Solution {
-    public TreeNode invertTree(TreeNode root) {
-        traverse(root);
-        return root;
-    }
+    // public TreeNode invertTree(TreeNode root) {
+    //     traverse(root);
+    //     return root;
+    // }
 
-    void traverse(TreeNode root) {
-        if(root == null) {
-            return;
-        }
-        // reverse(root.left, root.right);
-        TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-        traverse(root.left);
-        traverse(root.right);
-    }
+    // void traverse(TreeNode root) {
+    //     if(root == null) {
+    //         return;
+    //     }
+    //     // reverse(root.left, root.right);
+    //     TreeNode temp = root.left;
+    //     root.left = root.right;
+    //     root.right = temp;
+    //     traverse(root.left);
+    //     traverse(root.right);
+    // }
 
     // void reverse(TreeNode left, TreeNode right) {
     //     TreeNode temp = left;
     //     left = right;
     //     right = temp;
     // }
+
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) {
+            return null;
+        }
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
 }
 // @lc code=end
 
