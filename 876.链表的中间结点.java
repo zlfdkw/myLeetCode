@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=19 lang=java
+ * @lc app=leetcode.cn id=876 lang=java
  *
- * [19] 删除链表的倒数第 N 个结点
+ * [876] 链表的中间结点
  */
 
 // @lc code=start
@@ -16,23 +16,16 @@
  * }
  */
 class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode middleNode(ListNode head) {
+        if(head == null) {return null;}
         ListNode slow = head;
         ListNode fast = head;
-        while(n > 0) {
-            fast = fast.next;
-            n--;
-        }
-        if(fast == null){
-            return slow.next;
-        }
-        while(fast.next != null) {
-            fast = fast.next;
+        while(fast != null && fast.next != null) {
             slow = slow.next;
+            fast = fast.next.next;
         }
-        slow.next = slow.next.next;
-        return head;
-    }
+        return slow;
+     }
 }
 // @lc code=end
 
