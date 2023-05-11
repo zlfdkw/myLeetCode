@@ -39,14 +39,13 @@ class Solution {
     //     return new_head;   
     // }
     public ListNode reverseList(ListNode head) {
-        ListNode new_head = null;
-        while(head != null) {
-            ListNode temp = head.next;
-            head.next = new_head;
-            new_head = head;
-            head = temp;
+        if(head == null || head.next == null) {
+            return head;
         }
-        return new_head;
+        ListNode last = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
     }
 }
 
