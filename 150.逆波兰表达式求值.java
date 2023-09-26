@@ -11,7 +11,7 @@ class Solution {
     public int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i < tokens.length;i++) {
-            if(tokens[i].charAt(0) >= '0' && tokens[i].charAt(0) <= '9') {
+            if(!tokens[i].equals("+") && !tokens[i].equals("-") && !tokens[i].equals("/") && !tokens[i].equals("*")) {
                 stack.push(Integer.parseInt(tokens[i]));
             } else {
                 int right = stack.pop();
