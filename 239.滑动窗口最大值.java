@@ -32,8 +32,8 @@ class Solution {
         }
 
         //使用Integer类型会报错？？？？？
-        void poll(int num) {
-            if(!deque.isEmpty() && deque.peek() == num) {
+        void poll(Integer num) {
+            if(!deque.isEmpty() && deque.peek().equals(num)) {
                 deque.poll();
             }
         }
